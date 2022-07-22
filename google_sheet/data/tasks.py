@@ -7,7 +7,7 @@ from datetime import datetime
 import locale
 
 
-# Реализация пунктов 1-3, задача которую будем вызывть каждую минуту
+# Реализация пунктов 1-3
 @app.task
 def update_data():
     #Получаем данные с гугл таблиц
@@ -42,7 +42,7 @@ def get_dollar():
     soup = bs(data, "xml")
     result = soup.find("Valute", {"ID": "R01235"})
     dollar = result.Value.text
-    # заменяем заяптую на точку
+    # заменяем заяптую
     locale.setlocale(locale.LC_ALL, 'nl_NL')
     dollar_result = locale.atof(dollar)
     return dollar_result
